@@ -1,4 +1,4 @@
-# libssh-sys
+# libssh-sys-dylib
 Rust crate that provides FFI bindings to [libssh](https://www.libssh.org).
 
 ## Dependencies
@@ -26,6 +26,9 @@ See [smoke test](tests/smoke_test.rs) where simple ssh server and client are
 created. The goal of the test is to show bindings work correctly, it is not
 a recommended way of API usage. More examples in C/C++ can be found
 [here](https://git.libssh.org/projects/libssh.git/tree/examples).
+
+## libssh version
+Minimum supported version of `libssh` is 0.6.3, found in Ubuntu 16.04.
 
 ## License
 

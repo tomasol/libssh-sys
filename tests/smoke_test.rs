@@ -1,4 +1,4 @@
-use libssh_sys::*;
+use libssh_sys_dylib::*;
 use std::ffi::CString;
 use std::ffi::CStr;
 use std::convert::TryInto;
