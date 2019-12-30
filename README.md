@@ -2,13 +2,17 @@
 Rust crate that provides FFI bindings to [libssh](https://www.libssh.org).
 
 ## Dependencies
+Bindings are generated at build time using
+[bindgen](https://github.com/rust-lang/rust-bindgen). See its
+[Requirements page](https://rust-lang.github.io/rust-bindgen/requirements.html).
 `libssh` must be present on your system during runtime, it is dynamically linked.
 This addresses the [warnings](https://api.libssh.org/stable/libssh_linking.html)
 against static linking and its license implications.
 In order to build this crate `libssh` header files must also be available.
-On Ubuntu this can be achieved by running
+
+On Ubuntu all dependencies can be installed by running
 ```
-apt install libssh-dev
+apt install libssh-dev llvm-dev clang
 ```
 See other options on [libssh download page](https://www.libssh.org/get-it/).
 

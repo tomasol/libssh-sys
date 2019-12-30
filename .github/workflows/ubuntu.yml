@@ -1,0 +1,36 @@
+name: ubuntu
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04]
+        rust_toolchain: [stable, nightly, beta]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Run apt update
+      run: sudo apt update
+
+    - name: Install bindgen deps and libssh-dev
+      run: sudo apt install libssh-dev llvm-dev clang
+
+    - name: Install Rust
+      run: curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${{ matrix.rust_toolchain }}
+
+    - name: Build and test
+      run: |
+        source $HOME/.cargo/env
+        rustc -V
+        cargo -V
+        cargo test
