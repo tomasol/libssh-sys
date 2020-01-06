@@ -1,9 +1,9 @@
 extern crate bindgen;
 // based on https://rust-lang.github.io/rust-bindgen/tutorial-0.html
 use std::env;
-use std::path::PathBuf;
 use std::fs::OpenOptions;
 use std::io::prelude::*;
+use std::path::PathBuf;
 
 fn main() {
     // Tell cargo to tell rustc to link the system libssh
@@ -40,8 +40,9 @@ fn main() {
         .write(true)
         .truncate(true)
         .create(true)
-        .open(out_path).expect("Unable to open file");
-    out_file.write_all(generated.as_bytes()).expect("Unable to write to file");
-
-
+        .open(out_path)
+        .expect("Unable to open file");
+    out_file
+        .write_all(generated.as_bytes())
+        .expect("Unable to write to file");
 }
